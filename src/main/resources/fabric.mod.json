@@ -1,31 +1,32 @@
 {
 	"schemaVersion": 1,
-	"id": "modid",
+	"id": "alloy-of-time",
 	"version": "${version}",
-	"name": "Example mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Alloy of time",
+	"description": "A mix between magic and technology inspired in the Mistborn saga.",
 	"authors": [
-		"Me!"
+		"Lazaro_jpg",
+		"Jhon-Development"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/HearthianDev",
+		"sources": "https://github.com/HearthianDev/alloy-of-time"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/modid/icon.png",
+	"icon": "assets/alloyoftime/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"com.example.ExampleMod"
+			"net.HearthianDev.alloyOfTime.AlloyOfTime"
 		],
 		"client": [
-			"com.example.ExampleModClient"
+			"net.HearthianDev.alloyOfTime.AlloyOfTimeClient"
 		]
 	},
 	"mixins": [
-		"modid.mixins.json",
+		"alloyoftime.mixins.json",
 		{
-			"config": "modid.client.mixins.json",
+			"config": "alloyoftime.client.mixins.json",
 			"environment": "client"
 		}
 	],

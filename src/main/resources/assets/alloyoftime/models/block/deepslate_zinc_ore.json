@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "alloyoftime:block/deepslate_zinc_ore"
+  }
+}
+
