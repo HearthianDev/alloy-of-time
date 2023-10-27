@@ -12,7 +12,7 @@ import static net.HearthianDev.alloyOfTime.AlloyOfTime.MODID;
 
 
 public class OreGeneration {
-    public static final RegistryKey<PlacedFeature> ALUMINIUM_ORE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(MODID,"aluminium_ore"));
+    public static final RegistryKey<PlacedFeature> ALUMINIUM_ORE_PLACED_KEY = RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(MODID,"ore_aluminium"));
 
     public static void initOreGeneration() {
         BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, ALUMINIUM_ORE_PLACED_KEY);
