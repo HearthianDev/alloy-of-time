@@ -1,8 +1,13 @@
 package net.HearthianDev.alloyOfTime;
 
+import net.HearthianDev.alloyOfTime.Interfaces.AotPlayer;
 import net.HearthianDev.alloyOfTime.utils.Initializers.Items.Metals.*;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.network.PacketByteBuf;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -15,6 +20,8 @@ public class AlloyOfTime implements ModInitializer {
 	// It is considered best practice to use your mod id as the logger's name.
 	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final String MODID = "alloyoftime";
+
+	public static final Identifier DEBUG_LOG = new Identifier(MODID, "initial_sync");
 
 	@Override
 	public void onInitialize() {
@@ -43,5 +50,12 @@ public class AlloyOfTime implements ModInitializer {
 		initOreGeneration();
 
 		Registry.register(Registries.ITEM_GROUP, new Identifier(MODID, "alloyoftime"), ITEM_GROUP);
+
+		ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
+			PacketByteBuf data = PacketByteBufs.create();
+			data.writeInt(((AotPlayer) handler.getPlayer()).aot_initPlayer());
+			data.writeBoolean(((AotPlayer) handler.getPlayer()).aot_hasAwaken());
+			server.execute(() -> ServerPlayNetworking.send(handler.getPlayer(), DEBUG_LOG, data));
+		});
 	}
 }
